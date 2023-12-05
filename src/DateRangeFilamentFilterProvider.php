@@ -5,7 +5,7 @@ namespace Webbingbrasil\FilamentAdvancedFilter;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class FilamentAdvancedFilterProvider extends PackageServiceProvider
+class DateRangeFilamentFilterProvider extends PackageServiceProvider
 {
     public static string $name = 'filament-advancedfilter';
 

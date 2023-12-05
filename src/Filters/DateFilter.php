@@ -1,6 +1,6 @@
 <?php
 
-namespace Webbingbrasil\FilamentAdvancedFilter\Filters;
+namespace Shemyart\DateRangeFilamentFilter\Filters;
 
 use Carbon\Carbon;
 use Filament\Forms\Get;
@@ -9,7 +9,7 @@ use Filament\Tables\Filters\BaseFilter;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Illuminate\Database\Eloquent\Builder;
-use Webbingbrasil\FilamentAdvancedFilter\Concerns\HasClauses;
+use Shemyart\DateRangeFilamentFilter\Concerns\HasClauses;
 
 class DateFilter extends BaseFilter
 {
@@ -29,7 +29,7 @@ class DateFilter extends BaseFilter
                 return [
                     $message . ' ' .
                     ($state['from'] ? Carbon::parse($state['from'])->format(config('tables.date_format', 'Y-m-d')) : 0) .
-                    ' ' . __('filament-advancedfilter::clauses.between_and') . ' ' .
+                    ' ' . __('date-range-filament::clauses.between_and') . ' ' .
                     ($state['until'] ? Carbon::parse($state['until'])->format(config('tables.date_format', 'Y-m-d')) : "~")
                 ];
             }
@@ -41,7 +41,7 @@ class DateFilter extends BaseFilter
     public function clauses(): array
     {
         return [
-            static::CLAUSE_BETWEEN => __('filament-advancedfilter::clauses.between'),
+            static::CLAUSE_BETWEEN => __('date-range-filament::clauses.between'),
         ];
     }
 
@@ -68,10 +68,10 @@ class DateFilter extends BaseFilter
 //                    null
 //                ])),
             DatePicker::make('from')
-                ->label(__('filament-advancedfilter::clauses.from'))
+                ->label(__('date-range-filament::clauses.from'))
                 ->visible(fn (Get $get) => $get('clause') == static::CLAUSE_BETWEEN),
             DatePicker::make('until')
-                ->label(__('filament-advancedfilter::clauses.until'))
+                ->label(__('date-range-filament::clauses.until'))
                 ->visible(fn (Get $get) => $get('clause') == static::CLAUSE_BETWEEN),
 
         ];
