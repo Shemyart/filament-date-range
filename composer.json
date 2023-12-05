@@ -1,17 +1,17 @@
 {
-    "name": "webbingbrasil/filament-advancedfilter",
-    "description": "Advanced filter component for filament admin.",
+    "name": "shemyart/filament-date-range",
+    "description": "Advanced date-range filter component for filament admin.",
     "keywords": [
         "laravel",
         "filament",
         "filter"
     ],
-    "homepage": "https://github.com/webbingbrasil/filament-advancedfilter",
+    "homepage": "https://github.com/Shemyart/filament-date-range",
     "license": "MIT",
     "authors": [
         {
-            "name": "Danilo Andrade",
-            "email": "danilo@webbingbrasil.com.br",
+            "name": "Shemyakin Artem",
+            "email": "artem.shem@mail.ru",
             "role": "Developer"
         }
     ],
@@ -33,7 +33,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Webbingbrasil\\FilamentAdvancedFilter\\FilamentAdvancedFilterProvider"
+                "Shemyart\\DateRangeFilament\\DateRangeFilamentFilterProvider"
             ]
         }
     },
