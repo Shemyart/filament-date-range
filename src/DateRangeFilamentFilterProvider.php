@@ -1,6 +1,6 @@
 <?php
 
-namespace Webbingbrasil\FilamentAdvancedFilter;
+namespace Shemyart\DateRangeFilamentFilter;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
