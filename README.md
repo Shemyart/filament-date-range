@@ -12,7 +12,7 @@ Maked from [Filament Advanced Filter](https://github.com/webbingbrasil/filament-
 
 Install the package via composer (requires filament >= 3.x)
 ```bash
-composer require shemyart/filament-date-range:3.x-dev
+composer require shemyart/filament-date-range
 ```
 
 Optionally you can publish the translation files
