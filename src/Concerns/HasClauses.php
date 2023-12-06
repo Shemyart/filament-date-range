@@ -4,7 +4,10 @@ namespace Shemyart\DateRangeFilamentFilter\Concerns;
 
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
+use Filament\Forms\Components\ViewField;
 use Filament\Tables\Filters\Concerns\HasRelationship;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
@@ -81,25 +84,13 @@ trait HasClauses
     public function getFormSchema(): array
     {
         $fields = $this->fields();
-        $clause = Select::make('clause')
-            ->label($this->getLabel())
-            ->options($this->clauses());
-
-        if ($this->isClauseLabelDisabled()) {
-            $clause->disableLabel();
-        }
-
-        if (filled($defaultState = $this->getDefaultState())) {
-            $clause->default($defaultState);
-        }
 
         return $this->evaluate($this->formSchema, [
-            'clauseField' => $clause,
-            'fields' => $fields
-        ]) ?? [
-            $this->getWrapper()
-                ->schema(array_merge([$clause], $fields))
-        ];
+                'fields' => $fields
+            ]) ?? [
+                $this->getWrapper()
+                    ->schema($fields)
+            ];
     }
 
     public function enableClauseLabel(bool | Closure $condition = true): static

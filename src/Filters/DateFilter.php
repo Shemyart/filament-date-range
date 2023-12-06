@@ -15,28 +15,29 @@ class DateFilter extends BaseFilter
 {
     use HasClauses;
 
-    const CLAUSE_BETWEEN = 'between';
-
     protected function setUp(): void
     {
         parent::setUp();
-
         $this->indicateUsing(function (array $state): array {
-            $message = $this->getLabel() . ' ' . $this->clauses()[static::CLAUSE_BETWEEN];
-            return [
-                $message . ' ' .
-                ($state['from'] ? Carbon::parse($state['from'])->format(config('tables.date_format', 'Y-m-d')) : 0) .
-                ' ' . __('date-range-filament::clauses.between_and') . ' ' .
-                ($state['until'] ? Carbon::parse($state['until'])->format(config('tables.date_format', 'Y-m-d')) : "~")
-            ];
+            if(isset($state['from']) || isset($state['until'])){
+                $message = $this->getLabel() . ' ' . 'between';
+                return [
+                    $message . ' ' .
+                    ($state['from'] ? Carbon::parse($state['from'])->format(config('tables.date_format', 'Y-m-d')) : "all time") .
+                    ' ' . __('date-range-filament::clauses.between_and') . ' ' .
+                    ($state['until'] ? Carbon::parse($state['until'])->format(config('tables.date_format', 'Y-m-d')) : "now")
+                ];
+            }else{
+                return [];
+            }
         });
+
+
     }
 
     public function clauses(): array
     {
-        return [
-            static::CLAUSE_BETWEEN => __('date-range-filament::clauses.between'),
-        ];
+        return [];
     }
 
     protected function applyClause(Builder $query, string $column, string $clause, array $data = []): Builder
@@ -55,17 +56,10 @@ class DateFilter extends BaseFilter
     public function fields(): array
     {
         return [
-//            DatePicker::make('value')
-//                ->hiddenLabel()
-//                ->visible(fn (Get $get) => !in_array($get('clause'), [
-//                    static::CLAUSE_BETWEEN,
-//                    null
-//                ])),
             DatePicker::make('from')
                 ->label(__('date-range-filament::clauses.from')),
             DatePicker::make('until')
                 ->label(__('date-range-filament::clauses.until'))
-
         ];
     }
 }
