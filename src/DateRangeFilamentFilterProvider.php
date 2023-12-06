@@ -7,7 +7,7 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class DateRangeFilamentFilterProvider extends PackageServiceProvider
 {
-    public static string $name = 'filament-advancedfilter';
+    public static string $name = 'date-range-filament';
 
     public function configurePackage(Package $package): void
     {

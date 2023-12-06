@@ -21,20 +21,14 @@ class DateFilter extends BaseFilter
     {
         parent::setUp();
 
-        $state['clause'] = static::CLAUSE_BETWEEN;
         $this->indicateUsing(function (array $state): array {
-            if (isset($state['clause']) && !empty($state['clause'])) {
-                $message = $this->getLabel() . ' ' . $this->clauses()[$state['clause']];
-
-                return [
-                    $message . ' ' .
-                    ($state['from'] ? Carbon::parse($state['from'])->format(config('tables.date_format', 'Y-m-d')) : 0) .
-                    ' ' . __('date-range-filament::clauses.between_and') . ' ' .
-                    ($state['until'] ? Carbon::parse($state['until'])->format(config('tables.date_format', 'Y-m-d')) : "~")
-                ];
-            }
-
-            return [];
+            $message = $this->getLabel() . ' ' . $this->clauses()[static::CLAUSE_BETWEEN];
+            return [
+                $message . ' ' .
+                ($state['from'] ? Carbon::parse($state['from'])->format(config('tables.date_format', 'Y-m-d')) : 0) .
+                ' ' . __('date-range-filament::clauses.between_and') . ' ' .
+                ($state['until'] ? Carbon::parse($state['until'])->format(config('tables.date_format', 'Y-m-d')) : "~")
+            ];
         });
     }
 
@@ -68,11 +62,9 @@ class DateFilter extends BaseFilter
 //                    null
 //                ])),
             DatePicker::make('from')
-                ->label(__('date-range-filament::clauses.from'))
-                ->visible(fn (Get $get) => $get('clause') == static::CLAUSE_BETWEEN),
+                ->label(__('date-range-filament::clauses.from')),
             DatePicker::make('until')
                 ->label(__('date-range-filament::clauses.until'))
-                ->visible(fn (Get $get) => $get('clause') == static::CLAUSE_BETWEEN),
 
         ];
     }
