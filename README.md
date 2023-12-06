@@ -18,7 +18,7 @@ composer require shemyart/filament-date-range:3.x-dev
 Optionally you can publish the translation files
 
 ```php 
-php artisan vendor:publish --tag="filament-date-range-translations"
+php artisan vendor:publish --tag="date-range-filament-translations"
 ```
 
 ## Available Filters

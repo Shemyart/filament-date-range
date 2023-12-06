@@ -31,8 +31,6 @@ class DateFilter extends BaseFilter
                 return [];
             }
         });
-
-
     }
 
     public function clauses(): array
