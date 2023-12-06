@@ -33,7 +33,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Shemyart\\DateRangeFilament\\DateRangeFilamentFilterProvider"
+                "Shemyart\\DateRangeFilamentFilter\\DateRangeFilamentFilterProvider"
             ]
         }
     },
