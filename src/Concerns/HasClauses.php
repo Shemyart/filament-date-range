@@ -1,6 +1,6 @@
 <?php
 
-namespace Webbingbrasil\FilamentAdvancedFilter\Concerns;
+namespace Shemyart\DateRangeFilamentFilter\Concerns;
 
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\Fieldset;
