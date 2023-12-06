@@ -12,7 +12,7 @@ Maked from [Filament Advanced Filter](https://github.com/webbingbrasil/filament-
 
 Install the package via composer (requires filament >= 3.x)
 ```bash
-composer require shemyart/filament-date-range "^3.0"
+composer require shemyart/filament-date-range:3.x-dev
 ```
 
 Optionally you can publish the translation files
@@ -34,6 +34,8 @@ DateFilter::make('date_of_birth')
 ```
 
 This filter allows users to search records in range of dates
+
+![img_1.png](images/img_1.png)
 
 
 ## Credits
